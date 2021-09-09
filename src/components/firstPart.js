@@ -11,7 +11,7 @@ import { getOrderBookData } from "../features/orderBookComp1";
 function FirstPart() {
   //give an initial state so that the data won't be undefined at start
   //   const [asks, setAsks] = useState([0]);
-  const [bids, setBids] = useState([0]);
+  //   const [bids, setBids] = useState([0]);
   //   // //define the number of items
   //   // const n = 15;
 
@@ -21,16 +21,27 @@ function FirstPart() {
   const orders = useSelector((state) => state.orderBook.value);
   //   console.log(orders);
   //   console.log(orders.asks);
-  let orderObj = orders.asks;
+  let askObj = orders.asks;
   let asks = [];
   //   console.log(asks);
-  for (let props in orderObj) {
-    // console.log(`${props}: ${orderObj[props]}`);
-    // [orderObj[props], ...asks.slice(0, 15)
-    asks = [orderObj[props], ...asks];
+  for (let props in askObj) {
+    // console.log(`${props}: ${askObj[props]}`);
+    // [askObj[props], ...asks.slice(0, 15)
+    asks = [askObj[props], ...asks.slice(0, 15)];
     // localStorage.setItem("asks", asks);
   }
   console.log(asks.slice(0, 15));
+  //////////
+  let bidObj = orders.bids;
+  let bids = [];
+  //   console.log(asks);
+  for (let bidProps in bidObj) {
+    // console.log(`${props}: ${askObj[props]}`);
+    // [askObj[props], ...asks.slice(0, 15)
+    bids = [bidObj[bidProps], ...bids.slice(0, 15)];
+    // localStorage.setItem("asks", asks);
+  }
+  console.log(bids.slice(0, 15));
 
   //   console.log(asks);
 
@@ -72,15 +83,15 @@ function FirstPart() {
   }, []);
 
   //   //map the first 15 bids
-  //   const firstBids = orders.bids.map((item) => {
-  //     return (
-  //       <div className="flexing" key={uniqid()}>
-  //         <p style={{ color: "green" }}> {item[0]}</p>
-  //         <p style={{ color: "white" }}> {item[1]}</p>
-  //         <p style={{ color: "white" }}> {(item[0] * item[1]).toFixed(4)}</p>
-  //       </div>
-  //     );
-  //   });
+  const firstBids = bids.map((item) => {
+    return (
+      <div className="flexing" key={uniqid()}>
+        <p style={{ color: "green" }}> {item[0]}</p>
+        <p style={{ color: "white" }}> {item[1]}</p>
+        <p style={{ color: "white" }}> {(item[0] * item[1]).toFixed(4)}</p>
+      </div>
+    );
+  });
   //map the first 15 asks
 
   // for (let props in asks) {
@@ -111,7 +122,7 @@ function FirstPart() {
       </div>
       <div>
         <h1 style={{ color: "white" }}>Bids</h1>
-        {/* {firstBids} */}
+        {firstBids}
       </div>
     </div>
   );
