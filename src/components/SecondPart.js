@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import uniqid from "uniqid";
-import "../style/app.css";
+// import "../style/app.css";
 
 const SecondPart = () => {
   const [state, setState] = useState([0]);
