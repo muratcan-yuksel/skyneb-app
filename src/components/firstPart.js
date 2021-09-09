@@ -11,7 +11,7 @@ import { getOrderBookData } from "../features/orderBookComp1";
 function FirstPart() {
   //give an initial state so that the data won't be undefined at start
   //   const [asks, setAsks] = useState([0]);
-  //   const [bids, setBids] = useState([0]);
+  const [bids, setBids] = useState([0]);
   //   // //define the number of items
   //   // const n = 15;
 
@@ -21,23 +21,18 @@ function FirstPart() {
   const orders = useSelector((state) => state.orderBook.value);
   //   console.log(orders);
   //   console.log(orders.asks);
-  let asks = orders.asks;
+  let asksObj = orders.asks;
+  let arr1 = [];
   //   console.log(asks);
-  //   for (let props in asks) {
-  //     console.log(`${props}: ${asks[props][0]}`);
-  //   }
-  //   if (asks != null || asks != undefined) {
-  //     const try12 = Object.entries(asks)
-  //       .slice(0, 2)
-  //       .map((entry) => entry[1]);
-  //     console.log(try12);
-  //   }
-
-  if (asks != null || asks != undefined) {
-    const someValue = Object.values(asks);
-
-    console.log(someValue);
+  for (let props in asksObj) {
+    // console.log(`${props}: ${asksObj[props]}`);
+    // [asksObj[props], ...arr1.slice(0, 15)
+    arr1 = [asksObj[props], ...arr1];
+    localStorage.setItem("asks", arr1);
   }
+  console.log(arr1.slice(0, 15));
+
+  //   console.log(asks);
 
   const ws = new WebSocket("wss://ws.bitstamp.net");
 
@@ -86,16 +81,20 @@ function FirstPart() {
   //       </div>
   //     );
   //   });
-  //   //map the first 15 asks
-  //   const firstAsks = orders.asks.map((item) => {
-  //     return (
-  //       <div className="flexing" key={uniqid()}>
-  //         <p style={{ color: "red" }}> {item[0]}</p>
-  //         <p style={{ color: "white" }}> {item[1]}</p>
-  //         <p style={{ color: "white" }}> {(item[0] * item[1]).toFixed(4)}</p>
-  //       </div>
-  //     );
-  //   });
+  //map the first 15 asks
+
+  // for (let props in asks) {
+  //     console.log(`${props}: ${asks[props][0]}`);
+  //   }
+  // const firstAsks = orders.asks.map((item) => {
+  //   return (
+  //     <div className="flexing" key={uniqid()}>
+  //       <p style={{ color: "red" }}> {item[0]}</p>
+  //       <p style={{ color: "white" }}> {item[1]}</p>
+  //       <p style={{ color: "white" }}> {(item[0] * item[1]).toFixed(4)}</p>
+  //     </div>
+  //   );
+  // });
 
   // console.log(bids);
   // console.log(asks);
