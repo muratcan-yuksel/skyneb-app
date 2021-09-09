@@ -14,10 +14,8 @@ function App() {
         <div className="secondPane">
           <SecondPart />
         </div>
-        <div className="chartPane">
+        <div className="middlePane">
           <LastPart />
-        </div>
-        <div className="underChartPane">
           <ThirdPart />
         </div>
       </div>

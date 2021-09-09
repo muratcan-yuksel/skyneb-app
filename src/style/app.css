@@ -1,6 +1,4 @@
 body {
-  /* height: 100vh;
-  width: 100vw; */
   background-color: rgb(20, 21, 26);
   font-size: 0.7em;
 }
@@ -17,7 +15,7 @@ body {
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
 }
 .topPane {
   grid-column: 1;
@@ -28,11 +26,9 @@ body {
   grid-column: 3;
   grid-row: 1;
 }
-.chartPane {
+.middlePane {
   grid-column: 2;
   grid-row: 1;
-}
-.underChartPane {
-  grid-column: 2;
-  grid-row: 2;
+  display: flex;
+  flex-direction: column;
 }
