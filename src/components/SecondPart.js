@@ -7,7 +7,6 @@ import { getData, initialStateValue } from "../features/liveOrdersComp2";
 const SecondPart = () => {
   const dispatch = useDispatch();
   const orders = useSelector((state) => state.liveOrders.value);
-  console.log(orders);
 
   const ws = new WebSocket("wss://ws.bitstamp.net");
 

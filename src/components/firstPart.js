@@ -12,15 +12,11 @@ function FirstPart() {
   for (let props in askObj) {
     asks = [askObj[props], ...asks.slice(0, 15)];
   }
-  console.log(asks.slice(0, 15));
   let bidObj = orders.bids;
   let bids = [];
   for (let bidProps in bidObj) {
     bids = [bidObj[bidProps], ...bids.slice(0, 15)];
   }
-  console.log(bids.slice(0, 15));
-
-  //   console.log(asks);
 
   const ws = new WebSocket("wss://ws.bitstamp.net");
 

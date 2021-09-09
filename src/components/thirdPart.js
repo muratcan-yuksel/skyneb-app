@@ -8,7 +8,6 @@ const ThirdPart = () => {
   const dispatch = useDispatch();
 
   const orders = useSelector((state) => state.liveTrades.value);
-  console.log(orders);
 
   let stateObj = orders;
   let state = [];
