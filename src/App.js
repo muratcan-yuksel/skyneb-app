@@ -2,6 +2,7 @@ import "./style/app.css";
 import SecondPart from "./components/SecondPart";
 import FirstPart from "./components/firstPart";
 import ThirdPart from "./components/thirdPart";
+import LastPart from "./components/lastPart";
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
       {" "}
       {/* <SecondPart />{" "} */}
       {/* <FirstPart /> */}
-      <ThirdPart />
+      {/* <ThirdPart /> */}
+      <LastPart />
     </div>
   );
 }
