@@ -35,7 +35,7 @@ const SecondPart = () => {
           dispatch(getData(json.data));
         }
       } catch (err) {
-        // console.log(err);
+        console.log(err);
       }
     };
     //clean up function

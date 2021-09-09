@@ -1,11 +1,13 @@
 import "./style/app.css";
 import SecondPart from "./components/SecondPart";
+import FirstPart from "./components/firstPart";
 
 function App() {
   return (
     <div className="App">
       {" "}
-      <SecondPart />{" "}
+      {/* <SecondPart />{" "} */}
+      <FirstPart />
     </div>
   );
 }

@@ -6,10 +6,12 @@ import reportWebVitals from "./reportWebVitals";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import liveOrdersReducer from "./features/liveOrdersComp2";
+import orderBookReducer from "./features/orderBookComp1";
 
 const store = configureStore({
   reducer: {
     liveOrders: liveOrdersReducer,
+    orderBook: orderBookReducer,
   },
 });
 
