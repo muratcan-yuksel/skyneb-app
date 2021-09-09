@@ -21,16 +21,16 @@ function FirstPart() {
   const orders = useSelector((state) => state.orderBook.value);
   //   console.log(orders);
   //   console.log(orders.asks);
-  let asksObj = orders.asks;
-  let arr1 = [];
+  let orderObj = orders.asks;
+  let asks = [];
   //   console.log(asks);
-  for (let props in asksObj) {
-    // console.log(`${props}: ${asksObj[props]}`);
-    // [asksObj[props], ...arr1.slice(0, 15)
-    arr1 = [asksObj[props], ...arr1];
-    localStorage.setItem("asks", arr1);
+  for (let props in orderObj) {
+    // console.log(`${props}: ${orderObj[props]}`);
+    // [orderObj[props], ...asks.slice(0, 15)
+    asks = [orderObj[props], ...asks];
+    // localStorage.setItem("asks", asks);
   }
-  console.log(arr1.slice(0, 15));
+  console.log(asks.slice(0, 15));
 
   //   console.log(asks);
 
@@ -86,15 +86,15 @@ function FirstPart() {
   // for (let props in asks) {
   //     console.log(`${props}: ${asks[props][0]}`);
   //   }
-  // const firstAsks = orders.asks.map((item) => {
-  //   return (
-  //     <div className="flexing" key={uniqid()}>
-  //       <p style={{ color: "red" }}> {item[0]}</p>
-  //       <p style={{ color: "white" }}> {item[1]}</p>
-  //       <p style={{ color: "white" }}> {(item[0] * item[1]).toFixed(4)}</p>
-  //     </div>
-  //   );
-  // });
+  const firstAsks = asks.map((item) => {
+    return (
+      <div className="flexing" key={uniqid()}>
+        <p style={{ color: "red" }}> {item[0]}</p>
+        <p style={{ color: "white" }}> {item[1]}</p>
+        <p style={{ color: "white" }}> {(item[0] * item[1]).toFixed(4)}</p>
+      </div>
+    );
+  });
 
   // console.log(bids);
   // console.log(asks);
@@ -107,7 +107,7 @@ function FirstPart() {
           <h4 style={{ color: "grey" }}>Miktar(BTC)</h4>
           <h4 style={{ color: "grey" }}>Toplam</h4>
         </div>
-        {/* {firstAsks} */}
+        {firstAsks}
       </div>
       <div>
         <h1 style={{ color: "white" }}>Bids</h1>
