@@ -7,11 +7,20 @@ import LastPart from "./components/lastPart";
 function App() {
   return (
     <div className="App">
-      {" "}
-      {/* <SecondPart />{" "} */}
-      {/* <FirstPart /> */}
-      {/* <ThirdPart /> */}
-      <LastPart />
+      <div className="splitScreen">
+        <div className="topPane">
+          <FirstPart />
+        </div>
+        <div className="secondPane">
+          <SecondPart />
+        </div>
+        <div className="chartPane">
+          <LastPart />
+        </div>
+        <div className="underChartPane">
+          <ThirdPart />
+        </div>
+      </div>
     </div>
   );
 }

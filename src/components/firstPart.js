@@ -110,7 +110,7 @@ function FirstPart() {
   // console.log(bids);
   // console.log(asks);
   return (
-    <div>
+    <div style={{ height: "500px" }}>
       <div>
         <h1 style={{ color: "white" }}>Asks</h1>
         <div className="flexing">
