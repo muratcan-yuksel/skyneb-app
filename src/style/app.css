@@ -1,0 +1,13 @@
+body {
+  background-color: rgb(20, 21, 26);
+}
+
+.flexing {
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
+}
+.scrollable {
+  height: 35vh;
+  overflow-y: scroll;
+}

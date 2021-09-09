@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import uniqid from "uniqid";
-// import "../style/app.css";
+import "../style/app.css";
+//to grab the values of our states, we need to use useSelector
+import { useSelector } from "react-redux";
+//useDispatch hook is used to MODIFY values over states
+//while useSelector hook is used to ACCESS values over states
+import { useDispatch } from "react-redux";
+//import login action from user so that I can use this in dispatch
+import { getData, initialStateValue } from "../features/live-orders";
 
 const SecondPart = () => {
   const [state, setState] = useState([0]);
