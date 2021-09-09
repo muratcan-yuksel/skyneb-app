@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialStateValue = [0];
+export const initialStateValue = [0];
 
 export const liveOrders = createSlice({
-  name: "live-orders",
+  name: "liveOrders",
   initialState: { value: initialStateValue },
   reducers: {
     getData: (state, action) => {
-      state.value = action.payload;
+      state.value = [action.payload, ...state.value.slice(0, 30)];
     },
   },
 });

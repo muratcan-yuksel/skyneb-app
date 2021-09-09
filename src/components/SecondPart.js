@@ -2,15 +2,18 @@ import React, { useState, useEffect } from "react";
 import uniqid from "uniqid";
 import "../style/app.css";
 //to grab the values of our states, we need to use useSelector
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 //useDispatch hook is used to MODIFY values over states
 //while useSelector hook is used to ACCESS values over states
-import { useDispatch } from "react-redux";
 //import login action from user so that I can use this in dispatch
-import { getData, initialStateValue } from "../features/live-orders";
+import { getData, initialStateValue } from "../features/liveOrdersComp2";
 
 const SecondPart = () => {
-  const [state, setState] = useState([0]);
+  const dispatch = useDispatch();
+  // const [state, setState] = useState([0]);
+  // console.log(initialStateValue);
+  const orders = useSelector((state) => state.liveOrders.value);
+  console.log(orders);
 
   const ws = new WebSocket("wss://ws.bitstamp.net");
 
@@ -35,18 +38,20 @@ const SecondPart = () => {
           //    [json.data, ...initialStateValue.slice(0,30)]
           //   })
           // );
-          setState((state) => [json.data, ...state.slice(0, 30)]);
+          // setState((state) => [json.data, ...state.slice(0, 30)]);
+          dispatch(getData([json.data]));
         }
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     //clean up function
     return () => ws.close();
   }, []);
-  console.log(state);
+
+  // console.log(state);
   //map prices with dynamic colors
-  const mapPrices = state.map((item) => {
+  const mapPrices = orders.map((item) => {
     if (item.order_type === 0) {
       return (
         <p key={uniqid()} style={{ color: "green" }}>
@@ -62,7 +67,7 @@ const SecondPart = () => {
     }
   });
 
-  const mapAmount = state.map((item) => {
+  const mapAmount = orders.map((item) => {
     return (
       <p key={uniqid()} style={{ color: "white" }}>
         {item.amount}
@@ -70,7 +75,7 @@ const SecondPart = () => {
     );
   });
 
-  const mapDate = state.map((item) => {
+  const mapDate = orders.map((item) => {
     let date = item.datetime;
     let dateArr = Array.from(String(date), Number);
     dateArr.splice(2, 0, ":");
