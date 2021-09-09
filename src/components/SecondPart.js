@@ -39,13 +39,13 @@ const SecondPart = () => {
   const mapPrices = orders.map((item) => {
     if (item.order_type === 0) {
       return (
-        <p key={uniqid()} style={{ color: "green" }}>
+        <p key={uniqid()} className="green">
           {item.price}
         </p>
       );
     } else if (item.order_type === 1) {
       return (
-        <p key={uniqid()} style={{ color: "red" }}>
+        <p key={uniqid()} className="red">
           {item.price}
         </p>
       );
@@ -54,7 +54,7 @@ const SecondPart = () => {
 
   const mapAmount = orders.map((item) => {
     return (
-      <p key={uniqid()} style={{ color: "white" }}>
+      <p key={uniqid()} className="white">
         {item.amount}
       </p>
     );
@@ -68,7 +68,7 @@ const SecondPart = () => {
     dateArr.splice(-4);
     let lastArr = dateArr.join("");
     return (
-      <p key={uniqid()} style={{ color: "white" }}>
+      <p key={uniqid()} className="white">
         {lastArr}{" "}
       </p>
     );
