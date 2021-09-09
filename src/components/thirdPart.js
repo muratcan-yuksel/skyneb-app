@@ -9,9 +9,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { getTradesData } from "../features/liveTradesComp3";
 
 const ThirdPart = () => {
+  const dispatch = useDispatch();
+
   //   const [state, setState] = useState([]);
   const orders = useSelector((state) => state.liveTrades.value);
   console.log(orders);
+
+  let stateObj = orders;
+  let state = [];
+  //   console.log(state);
+  for (let props in stateObj) {
+    // console.log(`${props}: ${stateObj[props]}`);
+    // [stateObj[props], ...state.slice(0, 15)
+    state = [stateObj[props], ...state];
+    // localStorage.setItem("state", state);
+  }
 
   const ws = new WebSocket("wss://ws.bitstamp.net");
 
@@ -30,8 +42,9 @@ const ThirdPart = () => {
       const json = JSON.parse(event.data);
       try {
         if ((json.event = "data")) {
-          console.log(json.data);
-          setState((state) => [json.data, ...state]);
+          //   console.log(json.data);
+          //   setState((state) => [json.data, ...state]);
+          dispatch(getTradesData(json.data));
         }
       } catch (err) {
         console.log(err);
